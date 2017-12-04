@@ -1,0 +1,19 @@
+body{
+
+}
+
+.mt{
+    margin-top: 10pt;
+}
+#login-page{
+    width:400px;
+    margin-top:30px;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 6pt; 
+    padding: 30pt;
+    background-color: rgb(238, 233, 230);
+}
+.login-head{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20pt;
+}
