@@ -2,15 +2,16 @@ var express = require("express");
 var db = require("mongodb").MongoClient;
 var bodyparser = require("body-parser");
 var app = express();
+var pug = require("pug");
+
+
+app.use(bodyparser.json());
+app.use(express.static("public"));
 
 //sets views folder and view engine for use with the "render" function on the res param
 app.set("port",process.env.PORT || "3000");
 app.set("views",__dirname + "/views");
 app.set("view engine","pug");
-
-
-app.use(bodyparser.json());
-app.use(express.static("public"));
 
 var ChatUsers;
 
@@ -22,14 +23,14 @@ db.connect("mongodb://chatdb3336:Pk9p-5W-hB2w@den1.mongo1.gear.host:27001/chatdb
 
 
 app.get('/', function (req, res, next) {
+    //when you target root, yo uget the login page.  pug.compileFile 
+    var loginPage = pug.compileFile("views/pages/login.pug");
+    res.send(loginPage());
+    res.send(loginPage());
 
-    res.sendFile(__dirname + "/public/html/index.html");
-    //res.render("loginPage",{c1:"c1",c2:"c2",c3:"c3"})
+
 });
 
-app.validateLogin = function(isValid){
-
-}
 //this route listens for login POST request
 app.post('/login', function (req, res, next) {
    
@@ -51,7 +52,7 @@ app.post('/login', function (req, res, next) {
 
 
 })
-app.post("/signup",function(req,res,next){
+app.post("/signup",function(err,req,res,next){
     var loginCredentials = req.body;
     ChatUsers.insertOne(loginCredentials);
     res.send("true");
