@@ -15,8 +15,8 @@ function Login() {
                 console.log(xhr.responseText);
                 this.headerNotification.innerHTML = "Success!";
             }
-            else {
-                this.headerNotification.innerHTML = "Wrong Password...";
+            else if(xhr.readyState === 4 && xhr.responseText == "false") {
+                this.headerNotification.innerHTML = "Wrong Username or Password...";
             }
         }
         xhr.open('POST', '/' + action);

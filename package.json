@@ -7,9 +7,10 @@
         "express": "^4.16.2",
         "mongodb": "^2.2.33",
         "mysql": "^2.15.0",
-        "nodemon": "^1.12.1"
+        "nodemon": "^1.12.1",
+        "pug": "^2.0.0-rc.4"
     },
     "scripts": {
-        "dev": "nodemon index.js"
+        "dev": "nodemon app.js"
     }
 }
