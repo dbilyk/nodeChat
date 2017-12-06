@@ -1,4 +1,14 @@
+var pug = require("pug");
+var loginModel = require("../../models/loginModel.js");
 var loginHandlers = {};
+
+loginHandlers.getLoginPage = function(err,req,res,next){
+    //when you target root, yo uget the login page.  pug.compileFile 
+    var loginPage = pug.compileFile(__dirname + "views/pages/login.pug");
+    console.log(loginPage);
+    res.send(loginPage());
+    
+}
 
 loginHandlers.authenticate = function (err,req,res,next){
     var loginCredentials = req.body;
@@ -17,5 +27,5 @@ loginHandlers.authenticate = function (err,req,res,next){
     })
 }
 
-module.exports = loginHandlers;
+module.exports.loginHandlers = loginHandlers;
 
