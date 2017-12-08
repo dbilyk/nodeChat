@@ -1,31 +1,21 @@
-var pug = require("pug");
-var loginModel = require("../../models/loginModel.js");
-var loginHandlers = {};
+const pug = require("pug");
+const loginAuth = require("../../models/loginAuth.js");
 
-loginHandlers.getLoginPage = function(err,req,res,next){
-    //when you target root, yo uget the login page.  pug.compileFile 
-    var loginPage = pug.compileFile(__dirname + "views/pages/login.pug");
-    console.log(loginPage);
-    res.send(loginPage());
-    
+function loginHandlers(){
+    this.getLoginPage = function(req,res){
+        //when you target root, yo uget the login page.  pug.compileFile 
+        var loginPage = pug.compileFile(__dirname + "../../../views/pages/login.pug");
+        res.send(loginPage());
+        
+        
+    }
+
+    this.authenticate = function (req,res){
+        var loginCredentials = req.body;
+        console.log(res.send);
+        loginAuth.auth(loginCredentials,res.send.bind(res));
+    }
 }
 
-loginHandlers.authenticate = function (err,req,res,next){
-    var loginCredentials = req.body;
-    //queries the database of chatUsers for username that was passed in.
-    ChatUsers.findOne({username : loginCredentials.username}, 
-        function (err, obj) {
-        //if there is no such user or if the password doesnt match
-        if(!obj || obj.password != loginCredentials.password){
-            res.send("false");
-            console.log("username or password incorrect");
-        }
-        else{
-            //if credentials match
-            res.send("true");
-        }
-    })
-}
-
-module.exports.loginHandlers = loginHandlers;
+module.exports = new loginHandlers();
 
