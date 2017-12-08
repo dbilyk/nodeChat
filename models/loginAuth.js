@@ -11,6 +11,7 @@ function loginAuth() {
         connectToDatabase();
     }
 
+    //these are all private functions.
     var connectToDatabase = function () {
         //the url contains the login credentials for the database, must be formatted EXACTLY as such
         db.connect("mongodb://chatdb3336:Pk9p-5W-hB2w@den1.mongo1.gear.host:27001/chatdb3336",
@@ -39,10 +40,10 @@ function loginAuth() {
         collection.findOne(userDoc).then((user) => {
             if (!user) {
 
-                resultCall("false");
+                resultCall("loginFailed");
             }
             else {
-                resultCall("true");
+                resultCall("loginSucceeded");
             }
         }).catch((err)=>{console.log(err)});
 

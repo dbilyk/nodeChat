@@ -5,7 +5,12 @@ body{
 .mt{
     margin-top: 10pt;
 }
-#login-page{
+.login-head{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20pt;
+}
+
+#signup-page, #login-page{
     width:400px;
     margin-top:30px;
     border: 1px solid rgb(228, 228, 228);
@@ -13,7 +18,32 @@ body{
     padding: 30pt;
     background-color: rgb(240, 255, 249);
 }
-.login-head{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 20pt;
+
+#signup-page{
+    background-color: rgb(218, 255, 197);
+}
+
+@keyframes back-and-forth{
+    0%{
+        margin-left:0%;
+
+    }
+    33%{
+        margin-left:-2%;
+    }
+    66%{
+        margin-left:2%;
+    }
+    100%{
+        margin-left: 0%;
+    }
+
+}
+
+.negative-anim{
+    animation:back-and-forth 0.2s linear 0s 3 alternate;
+    -webkit-animation:back-and-forth 0.2s linear  0s 3 alternate;
+    
+
+
 }

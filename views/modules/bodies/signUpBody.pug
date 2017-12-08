@@ -1,0 +1,9 @@
+div#signup-page.container-fluid
+  h4.login-head.col-xs.text-center Create New Account
+  div.mt.row
+    form.text-center.align-items-center
+      input.mt.col-xs-6.form-control(type='text', onblur='login.getUsername(this.value)', placeholder='Username')
+      input.mt.col-xs-6.form-control(type='text', onblur='login.getPassword(this.value)', placeholder='Password')
+  div.row
+    span.col-xs-3
+    input.form-field.col-xs-6.mt.btn.btn-secondary.center-block(onclick="login.sendToServer('signupUser')", type='button', value='Sign Up')

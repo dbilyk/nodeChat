@@ -8,4 +8,8 @@ router.get("/", loginHandlers.getLoginPage);
 
 router.post("/login", loginHandlers.authenticate);
 
+router.get("/getSignupPage", loginHandlers.getSignUpPage);
+
+router.post("/signupUser", loginHandlers.signUpUser);
+
 module.exports = router;

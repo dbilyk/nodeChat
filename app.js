@@ -10,14 +10,5 @@ app.use(express.static("public"));
 app.use(loginRoutes);
 //sets views folder and view engine for use with the "render" function on the res param
 app.set("port",process.env.PORT || "3000");
-app.set("views",__dirname + "/views");
-app.set("view engine","pug");
-
-
-// app.post("/signup",function(err,req,res,next){
-//     var loginCredentials = req.body;
-//     ChatUsers.insertOne(loginCredentials);
-//     res.send("true");
-// })
 
 app.listen(3000, () => console.log("app listening on port 3000"));
